@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Suspense } from "react";
-import { Navbar } from "@/components/layout/Navbar";
 import "./globals.css";
 
 const studioFont = localFont({
@@ -19,9 +17,9 @@ const consoleFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "VoiceRep — 100% Local AI Voice Replication & Studio Narration",
+  title: "VoiceRep — 100% Local AI Voice Cloning Platform",
   description:
-    "Instant zero-shot local voice cloning and studio narration running completely on-device (via local F5-TTS neural models, with Apple Silicon / MPS acceleration), featuring dual-layer C2PA cryptographic provenance and 100% offline data privacy.",
+    "Instant zero-shot local voice cloning and studio narration running completely on-device. Zero cloud costs, 100% privacy, and dual-layer C2PA cryptographic provenance. Download the desktop release.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -35,16 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full ${studioFont.variable} ${consoleFont.variable}`}>
       <body className="min-h-full flex flex-col antialiased">
-        <a href="#main-content" className="skip-link">
-          Skip to content
+        <a href="#download" className="skip-link">
+          Skip to download
         </a>
-        <Suspense fallback={<div className="h-16 border-b border-line" />}>
-          <Navbar />
-        </Suspense>
         <main id="main-content" className="flex-1 flex flex-col">
-          <Suspense fallback={<div className="py-20 text-center text-sm text-muted">Loading...</div>}>
-            {children}
-          </Suspense>
+          {children}
         </main>
       </body>
     </html>
