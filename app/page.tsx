@@ -84,7 +84,7 @@ export default function ProductLandingPage() {
             <GithubIcon size={15} />
             GitHub
           </a>
-          <a href="#download" className="btn btn-primary">
+          <a href="https://github.com/Yash-Raw/VoiceRep/releases/download/v1.0.0/VoiceRep_1.0.0_aarch64.dmg" className="btn btn-primary">
             Download v1.0.0 <Download size={14} />
           </a>
         </div>
@@ -412,6 +412,7 @@ export default function ProductLandingPage() {
             </Link>
 
             <div className="broadcast-footer-links">
+
               <a
                 href="https://github.com/Yash-Raw/VoiceRep"
                 target="_blank"
@@ -433,6 +434,13 @@ export default function ProductLandingPage() {
                 rel="noopener noreferrer"
               >
                 AGPL-3.0 License
+              </a>
+              <a
+                href="https://x.com/yash_chaur6225"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X
               </a>
             </div>
           </div>
