@@ -17,7 +17,7 @@ const consoleFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "VoiceRep — 100% Local AI Voice Cloning Platform",
+  title: "KolRep — 100% Local AI Voice Cloning Platform",
   description:
     "Instant zero-shot local voice cloning and studio narration running completely on-device. Zero cloud costs, 100% privacy, and dual-layer C2PA cryptographic provenance. Download the desktop release.",
   icons: {

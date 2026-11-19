@@ -43,7 +43,7 @@ export default function ProductLandingPage() {
   const [copiedCmd, setCopiedCmd] = useState(false);
 
   const sha256 = "91c5bb06bb55ac73fc526605426b26ae1f2228a1a87288f96dda68daac7d8209";
-  const installCmd = "git clone https://github.com/Yash-Raw/VoiceRep.git\ncd VoiceRep && chmod +x run-local.sh && ./run-local.sh";
+  const installCmd = "git clone https://github.com/Yash-Raw/KolRep.git\ncd KolRep && chmod +x run-local.sh && ./run-local.sh";
 
   const handleCopySha = () => {
     navigator.clipboard.writeText(sha256);
@@ -65,7 +65,7 @@ export default function ProductLandingPage() {
           <span className="brand-symbol">
             <AudioLines size={20} strokeWidth={2.2} />
           </span>
-          VoiceRep
+          KolRep
         </Link>
 
         <div className="landing-header-actions">
@@ -76,7 +76,7 @@ export default function ProductLandingPage() {
             Specifications
           </a>
           <a
-            href="https://github.com/Yash-Raw/VoiceRep"
+            href="https://github.com/Yash-Raw/KolRep"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-muted hover:text-ink"
@@ -84,7 +84,7 @@ export default function ProductLandingPage() {
             <GithubIcon size={15} />
             GitHub
           </a>
-          <a href="https://github.com/Yash-Raw/VoiceRep/releases/download/v1.0.0/VoiceRep_1.0.0_aarch64.dmg" className="btn btn-primary">
+          <a href="#download" className="btn btn-primary">
             Download v1.0.0 <Download size={14} />
           </a>
         </div>
@@ -95,7 +95,7 @@ export default function ProductLandingPage() {
         {/* Broadcast Kicker */}
         <div className="broadcast-kicker">
           <p className="eyebrow">INDEPENDENT VOICE PRODUCTION</p>
-          <p className="eyebrow">RECORDED BY YOU. REIMAGINED BY VOICEREP.</p>
+          <p className="eyebrow">RECORDED BY YOU. REIMAGINED BY KOLREP.</p>
         </div>
 
         {/* Main Headline */}
@@ -117,7 +117,7 @@ export default function ProductLandingPage() {
               Download release <Download size={16} />
             </a>
             <a
-              href="https://github.com/Yash-Raw/VoiceRep"
+              href="https://github.com/Yash-Raw/KolRep"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
@@ -131,7 +131,7 @@ export default function ProductLandingPage() {
         <div className="broadcast-art" role="img" aria-label="Analog signal waveform monitor">
           <span className="broadcast-art-label">FIG. 01 / THE HUMAN SIGNAL</span>
           <span className="broadcast-art-number" aria-hidden="true">
-            VR—01
+            KR—01
           </span>
           <SignalArt />
           <div className="broadcast-art-bottom">
@@ -146,7 +146,7 @@ export default function ProductLandingPage() {
         <div className="broadcast-section-header">
           <div>
             <p className="eyebrow">
-              VOICEREP AT A GLANCE
+              KOLREP AT A GLANCE
               <br />
               01 — 03
             </p>
@@ -215,7 +215,7 @@ export default function ProductLandingPage() {
             </p>
           </div>
           <h2>
-            Download VoiceRep.
+            Download KolRep.
             <br />
             Ready for your hardware.
           </h2>
@@ -258,11 +258,11 @@ export default function ProductLandingPage() {
 
             <div>
               <a
-                href="https://github.com/Yash-Raw/VoiceRep/releases/download/v1.0.0/VoiceRep_1.0.0_aarch64.dmg"
+                href="https://github.com/Yash-Raw/KolRep/releases/download/v1.0.0/KolRep_1.0.0_aarch64.dmg"
                 className="btn btn-primary w-full text-sm py-3.5 mb-4 font-semibold"
               >
                 <Download size={18} />
-                Download VoiceRep_1.0.0_aarch64.dmg
+                Download KolRep_1.0.0_aarch64.dmg
               </a>
 
               {/* SHA256 Checksum block */}
@@ -337,7 +337,7 @@ export default function ProductLandingPage() {
 
             <div>
               <a
-                href="https://github.com/Yash-Raw/VoiceRep"
+                href="https://github.com/Yash-Raw/KolRep"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary w-full text-sm py-3.5 font-semibold flex items-center justify-center gap-2"
@@ -408,13 +408,12 @@ export default function ProductLandingPage() {
               <span className="brand-symbol">
                 <AudioLines size={20} strokeWidth={2.2} />
               </span>
-              VoiceRep
+              KolRep
             </Link>
 
             <div className="broadcast-footer-links">
-
               <a
-                href="https://github.com/Yash-Raw/VoiceRep"
+                href="https://github.com/Yash-Raw/KolRep"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5"
@@ -422,14 +421,14 @@ export default function ProductLandingPage() {
                 <GithubIcon size={14} /> Repository
               </a>
               <a
-                href="https://github.com/Yash-Raw/VoiceRep/releases"
+                href="https://github.com/Yash-Raw/KolRep/releases"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Releases
               </a>
               <a
-                href="https://github.com/Yash-Raw/VoiceRep/blob/main/LICENSE"
+                href="https://github.com/Yash-Raw/KolRep/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -447,7 +446,7 @@ export default function ProductLandingPage() {
 
           <div className="broadcast-footer-bottom">
             <span>YOUR DEVICE. YOUR VOICE.</span>
-            <span>© {new Date().getFullYear()} VOICEREP — 100% LOCAL AI VOICE CLONING</span>
+            <span>© {new Date().getFullYear()} KOLREP — 100% LOCAL AI VOICE CLONING</span>
           </div>
         </div>
       </footer>
