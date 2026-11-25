@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import {
   AudioLines,
-  ArrowRight,
   ArrowUpRight,
   Check,
   CheckCircle2,
@@ -42,8 +41,9 @@ export default function ProductLandingPage() {
   const [copiedSha, setCopiedSha] = useState(false);
   const [copiedCmd, setCopiedCmd] = useState(false);
 
-  const sha256 = "91c5bb06bb55ac73fc526605426b26ae1f2228a1a87288f96dda68daac7d8209";
-  const installCmd = "git clone https://github.com/Yash-Raw/KolRep.git\ncd KolRep && chmod +x run-local.sh && ./run-local.sh";
+  const sha256 = "472476d4cd7d63213152d2682218d6bc456c532a970223f1a411216588ffb3ac";
+  const installCmd =
+    "git clone https://github.com/Yash-Raw/KolRep.git\ncd KolRep && pip install -r backend/requirements.txt\n(cd frontend && npm install) && ./run-local.sh";
 
   const handleCopySha = () => {
     navigator.clipboard.writeText(sha256);
@@ -84,7 +84,7 @@ export default function ProductLandingPage() {
             <GithubIcon size={15} />
             GitHub
           </a>
-          <a href="#download" className="btn btn-primary">
+          <a href="https://github.com/Yash-Raw/KolRep/releases/download/v1.0.0/KolRep_1.0.0_aarch64.dmg" className="btn btn-primary">
             Download v1.0.0 <Download size={14} />
           </a>
         </div>
@@ -108,9 +108,9 @@ export default function ProductLandingPage() {
         {/* Lead Subtext & CTAs */}
         <div className="broadcast-intro">
           <p>
-            Instant zero-shot local voice cloning and studio narration running completely on-device.
-            Zero cloud costs, zero telemetry, and verifiable content authenticity via dual-layer C2PA
-            cryptographic provenance.
+            Instant zero-shot local voice cloning and studio narration running on your own hardware.
+            Zero cloud voice APIs, zero telemetry, and dual-layer cryptographic provenance with
+            in-band acoustic watermarking.
           </p>
           <div className="flex flex-wrap gap-3 shrink-0">
             <a href="#download" className="btn btn-primary">
@@ -136,7 +136,7 @@ export default function ProductLandingPage() {
           <SignalArt />
           <div className="broadcast-art-bottom">
             <span>ORIGINAL VOICE. NEW POSSIBILITIES.</span>
-            <span>100% LOCAL · AIR-GAPPED</span>
+            <span>100% LOCAL · OFFLINE-READY</span>
           </div>
         </div>
       </section>
@@ -162,15 +162,15 @@ export default function ProductLandingPage() {
           {/* Feature 01 */}
           <article className="broadcast-step">
             <p className="eyebrow">01 / COMPLETE PRIVACY</p>
-            <h3>100% On-Device & Air-Gapped.</h3>
+            <h3>100% On-Device Inference.</h3>
             <p>
-              Runs locally on your Mac or PC using PyTorch and Apple Silicon Metal Performance Shaders
-              (MPS) or NVIDIA CUDA. Your biometric voiceprints and raw recordings never leave your local
-              SSD.
+              Runs locally on your Mac or Linux machine using PyTorch with Apple Silicon Metal
+              (MPS), NVIDIA CUDA, or CPU fallback. After a one-time ~1.05 GB model weight download,
+              your recordings and voice profiles stay strictly on your local SSD.
             </p>
             <div className="mono text-[10px] text-[#a5ba84] mt-6 flex items-center gap-1.5">
               <CheckCircle2 size={13} />
-              <span>0 BYTES CLOUD INGRESS · ZERO TELEMETRY</span>
+              <span>ZERO CLOUD VOICE APIS · ZERO TELEMETRY</span>
             </div>
           </article>
 
@@ -179,26 +179,28 @@ export default function ProductLandingPage() {
             <p className="eyebrow">02 / STUDIO QUALITY</p>
             <h3>Zero-Shot Diffusion Engine.</h3>
             <p>
-              Replicate any voice with expressive nuance and natural pacing from a single 10-second reference
-              sample. Powered by F5-TTS Conditional Flow Matching DiT and Whisper phoneme alignment.
+              Replicate an authorized voice with expressive nuance and natural pacing from a single
+              6–12 second reference sample. Powered by F5-TTS Conditional Flow Matching DiT and
+              Whisper ASR reference transcription.
             </p>
             <div className="mono text-[10px] text-[#c63e26] mt-6 flex items-center gap-1.5">
               <Sparkles size={13} />
-              <span>36-STEP FLOW MATCHING · 24-BIT PCM WAV</span>
+              <span>36-STEP FLOW MATCHING · 24 KHZ 256K MP3</span>
             </div>
           </article>
 
           {/* Feature 03 */}
           <article className="broadcast-step">
-            <p className="eyebrow">03 / VERIFIED AUTHENTICITY</p>
-            <h3>Dual-Layer C2PA Provenance.</h3>
+            <p className="eyebrow">03 / VERIFIED PROVENANCE</p>
+            <h3>Dual-Layer Provenance.</h3>
             <p>
-              Every take is embedded with an imperceptible psychoacoustic watermark and cryptographically
-              signed with an X.509 C2PA manifest conforming to EU AI Act Article 50 and US EO 14110.
+              Generated takes are signed with a local X.509 ECDSA P-256 provenance manifest
+              (SHA-256 audio hash binding) and embedded with an in-band QIM acoustic watermark on
+              clips 6 seconds or longer, inspectable via the built-in verifier.
             </p>
             <div className="mono text-[10px] text-[#a5ba84] mt-6 flex items-center gap-1.5">
               <ShieldCheck size={13} />
-              <span>CRYPTOGRAPHIC MANIFEST + WATERMARK</span>
+              <span>X.509 ECDSA MANIFEST + QIM WATERMARK</span>
             </div>
           </article>
         </div>
@@ -236,14 +238,15 @@ export default function ProductLandingPage() {
               </div>
 
               <p className="text-sm text-muted leading-relaxed mb-6">
-                Self-contained standalone desktop package. Includes the native Tauri application with zero
-                prerequisites—no Python, Node.js, Docker, PostgreSQL, or FFmpeg installation required.
+                Self-contained standalone desktop package. Includes the native Tauri v2 application
+                with zero runtime prerequisites—no Python, Node.js, Docker, PostgreSQL, Redis, or
+                FFmpeg installation required.
               </p>
 
               <div className="space-y-2 mb-8 text-xs text-muted">
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>Supports macOS 13.0+ (Ventura, Sonoma, Sequoia)</span>
+                  <span>Supports macOS 12.0+ (Monterey, Ventura, Sonoma, Sequoia)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
@@ -251,7 +254,7 @@ export default function ProductLandingPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>1-click DMG installer with automatic model weights setup</span>
+                  <span>Drag-to-Applications DMG with guided first-run model download (~1.05 GB)</span>
                 </div>
               </div>
             </div>
@@ -279,6 +282,10 @@ export default function ProductLandingPage() {
                 </div>
                 <div className="mono text-[11px] text-ink break-all select-all">{sha256}</div>
               </div>
+              <p className="text-[11px] text-muted mt-3 leading-relaxed">
+                Unsigned open-source release: on first launch, right-click <code>KolRep.app</code> &rarr;{" "}
+                <strong>Open</strong> to approve via macOS Gatekeeper.
+              </p>
             </div>
           </div>
 
@@ -287,8 +294,8 @@ export default function ProductLandingPage() {
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-line mb-6">
                 <div>
-                  <span className="eyebrow block mb-1">DEVELOPERS & LINUX / WINDOWS</span>
-                  <h3 className="text-2xl font-medium text-ink">Turnkey Source & Docker</h3>
+                  <span className="eyebrow block mb-1">DEVELOPERS &amp; LINUX / SELF-HOSTED</span>
+                  <h3 className="text-2xl font-medium text-ink">Source &amp; Docker Compose</h3>
                 </div>
                 <span className="mono text-xs px-2.5 py-1 bg-soft text-muted rounded border border-line font-medium">
                   OPEN SOURCE
@@ -296,15 +303,15 @@ export default function ProductLandingPage() {
               </div>
 
               <p className="text-sm text-muted leading-relaxed mb-6">
-                Run the full-stack system locally via the turnkey launcher script or Docker Compose.
-                Supports Linux and Windows workstations with NVIDIA CUDA GPU acceleration.
+                Run the full-stack Next.js and FastAPI platform locally from source or via Docker
+                Compose. Supports macOS (MPS) and Linux (NVIDIA CUDA or CPU) workstations.
               </p>
 
               {/* CLI Command Box */}
               <div className="mb-6">
                 <div className="flex justify-between items-center mb-1">
                   <span className="mono text-[10px] text-muted flex items-center gap-1.5">
-                    <Terminal size={12} /> TURNKEY LAUNCHER COMMAND
+                    <Terminal size={12} /> SOURCE LAUNCHER COMMANDS
                   </span>
                   <button
                     onClick={handleCopyCmd}
@@ -322,15 +329,15 @@ export default function ProductLandingPage() {
               <div className="space-y-2 mb-8 text-xs text-muted">
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>Python 3.11+, Node.js 20+, and FFmpeg</span>
+                  <span>Python 3.11+, Node.js 20.9+ (22 recommended), FFmpeg, PostgreSQL &amp; Redis</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>NVIDIA CUDA 12.x or Apple Silicon MPS</span>
+                  <span>Apple Silicon MPS, NVIDIA CUDA (native Python), or CPU fallback</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>Docker support: <code>docker compose up -d</code></span>
+                  <span>Docker support: <code>docker compose up -d --build</code> (CPU container)</span>
                 </div>
               </div>
             </div>
@@ -352,48 +359,52 @@ export default function ProductLandingPage() {
         {/* 5. System Requirements / Specifications Grid */}
         <div id="specifications" className="border-t border-line pt-10">
           <div className="broadcast-kicker" style={{ marginBottom: "24px" }}>
-            <p className="eyebrow">HARDWARE REQUIREMENTS & SPECIFICATIONS</p>
-            <p className="eyebrow">TESTED & BENCHMARKED</p>
+            <p className="eyebrow">HARDWARE REQUIREMENTS &amp; SPECIFICATIONS</p>
+            <p className="eyebrow">RECOMMENDED CONFIGURATION</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-5 border border-line bg-paper rounded">
               <span className="mono text-[10px] text-muted uppercase block mb-1">ACCELERATION</span>
               <h4 className="text-base font-medium mb-2 flex items-center gap-2">
-                <Cpu size={16} className="text-[#c63e26]" /> Apple MPS / CUDA
+                <Cpu size={16} className="text-[#c63e26]" /> MPS / CUDA / CPU
               </h4>
               <p className="text-xs text-muted leading-relaxed">
-                Apple Silicon (M1/M2/M3/M4) via Metal or NVIDIA RTX GPU (CUDA 12.x) with 8GB+ VRAM.
+                Apple Silicon (M1–M4) via Metal MPS, NVIDIA CUDA GPU (native Python), or automatic
+                CPU fallback.
               </p>
             </div>
 
             <div className="p-5 border border-line bg-paper rounded">
-              <span className="mono text-[10px] text-muted uppercase block mb-1">MEMORY (RAM)</span>
+              <span className="mono text-[10px] text-muted uppercase block mb-1">MEMORY &amp; DISK</span>
               <h4 className="text-base font-medium mb-2 flex items-center gap-2">
-                <HardDrive size={16} className="text-[#c63e26]" /> 16GB Unified RAM
+                <HardDrive size={16} className="text-[#c63e26]" /> 16GB RAM · 2.5GB+ Disk
               </h4>
               <p className="text-xs text-muted leading-relaxed">
-                Minimum 16GB Unified Memory. 24GB+ recommended for long-form batch narration.
+                16GB RAM recommended for smooth diffusion synthesis, plus at least 2.5GB free disk
+                space for local model weights.
               </p>
             </div>
 
             <div className="p-5 border border-line bg-paper rounded">
-              <span className="mono text-[10px] text-muted uppercase block mb-1">COMPLIANCE</span>
+              <span className="mono text-[10px] text-muted uppercase block mb-1">PROVENANCE</span>
               <h4 className="text-base font-medium mb-2 flex items-center gap-2">
-                <ShieldCheck size={16} className="text-[#c63e26]" /> C2PA / EU AI Act
+                <ShieldCheck size={16} className="text-[#c63e26]" /> X.509 + QIM Watermark
               </h4>
               <p className="text-xs text-muted leading-relaxed">
-                Complies with EU AI Act Article 50 and US EO 14110 for content provenance.
+                Local X.509 ECDSA P-256 signed metadata with SHA-256 audio hash binding and in-band
+                QIM watermarking.
               </p>
             </div>
 
             <div className="p-5 border border-line bg-paper rounded">
-              <span className="mono text-[10px] text-muted uppercase block mb-1">PRICING</span>
+              <span className="mono text-[10px] text-muted uppercase block mb-1">LICENSING</span>
               <h4 className="text-base font-medium mb-2 flex items-center gap-2">
-                <Lock size={16} className="text-[#c63e26]" /> $0.00 / Free AGPL-3.0
+                <Lock size={16} className="text-[#c63e26]" /> $0.00 / AGPL-3.0 Code
               </h4>
               <p className="text-xs text-muted leading-relaxed">
-                Zero subscriptions. Zero credit cards. Zero token meters. True self-hosted ownership.
+                Zero subscriptions or cloud bills. KolRep code is AGPL-3.0; default F5-TTS weights
+                are CC-BY-NC-4.0 (non-commercial).
               </p>
             </div>
           </div>
