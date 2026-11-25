@@ -20,8 +20,38 @@ export const metadata: Metadata = {
   title: "KolRep — 100% Local AI Voice Cloning Platform",
   description:
     "Zero-shot local voice cloning and studio narration running on your own hardware. Zero cloud voice APIs, zero telemetry, and dual-layer cryptographic provenance. Download the macOS desktop release.",
-  icons: {
-    icon: "/favicon.ico",
+  applicationName: "KolRep",
+  keywords: [
+    "KolRep",
+    "local AI voice cloning",
+    "offline text to speech",
+    "F5-TTS",
+    "Apple Silicon MPS",
+    "studio narration",
+    "cryptographic provenance",
+    "acoustic watermarking",
+    "open source voice cloning",
+  ],
+  authors: [{ name: "KolRep", url: "https://github.com/Yash-Raw/KolRep" }],
+  creator: "KolRep",
+  publisher: "KolRep",
+  openGraph: {
+    title: "KolRep — 100% Local AI Voice Cloning Platform",
+    description:
+      "Zero-shot local voice cloning and studio narration running on your own hardware. Zero cloud voice APIs, zero telemetry, and dual-layer cryptographic provenance.",
+    siteName: "KolRep",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KolRep — 100% Local AI Voice Cloning Platform",
+    description:
+      "Zero-shot local voice cloning and studio narration running on your own hardware. Zero cloud voice APIs, zero telemetry, and dual-layer cryptographic provenance.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
