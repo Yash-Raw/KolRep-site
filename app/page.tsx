@@ -5,11 +5,11 @@ import Link from "next/link";
 import {
   AudioLines,
   ArrowUpRight,
+  Box,
   Check,
   CheckCircle2,
   Copy,
   Cpu,
-  Download,
   HardDrive,
   Lock,
   ShieldCheck,
@@ -38,23 +38,24 @@ function GithubIcon({ size = 15, className = "" }: { size?: number; className?: 
 }
 
 export default function ProductLandingPage() {
-  const [copiedSha, setCopiedSha] = useState(false);
   const [copiedCmd, setCopiedCmd] = useState(false);
+  const [copiedDocker, setCopiedDocker] = useState(false);
 
-  const sha256 = "472476d4cd7d63213152d2682218d6bc456c532a970223f1a411216588ffb3ac";
   const installCmd =
     "git clone https://github.com/Yash-Raw/KolRep.git\ncd KolRep && pip install -r backend/requirements.txt\n(cd frontend && npm install) && ./run-local.sh";
-
-  const handleCopySha = () => {
-    navigator.clipboard.writeText(sha256);
-    setCopiedSha(true);
-    setTimeout(() => setCopiedSha(false), 2000);
-  };
+  const dockerCmd =
+    "git clone https://github.com/Yash-Raw/KolRep.git\ncd KolRep && docker compose up -d --build";
 
   const handleCopyCmd = () => {
     navigator.clipboard.writeText(installCmd);
     setCopiedCmd(true);
     setTimeout(() => setCopiedCmd(false), 2000);
+  };
+
+  const handleCopyDocker = () => {
+    navigator.clipboard.writeText(dockerCmd);
+    setCopiedDocker(true);
+    setTimeout(() => setCopiedDocker(false), 2000);
   };
 
   return (
@@ -84,8 +85,8 @@ export default function ProductLandingPage() {
             <GithubIcon size={15} />
             GitHub
           </a>
-          <a href="https://github.com/Yash-Raw/KolRep/releases/download/v1.0.0/KolRep_1.0.0_aarch64.dmg" className="btn btn-primary">
-            Download v1.0.0 <Download size={14} />
+          <a href="#install" className="btn btn-primary">
+            Run locally <Terminal size={14} />
           </a>
         </div>
       </header>
@@ -113,8 +114,8 @@ export default function ProductLandingPage() {
             in-band acoustic watermarking.
           </p>
           <div className="flex flex-wrap gap-3 shrink-0">
-            <a href="#download" className="btn btn-primary">
-              Download release <Download size={16} />
+            <a href="#install" className="btn btn-primary">
+              Run locally <Terminal size={16} />
             </a>
             <a
               href="https://github.com/Yash-Raw/KolRep"
@@ -206,31 +207,31 @@ export default function ProductLandingPage() {
         </div>
       </section>
 
-      {/* 4. Download Release Section */}
-      <section id="download" className="broadcast-process" style={{ paddingTop: 0 }} aria-label="Download">
+      {/* 4. Local Installation Section */}
+      <section id="install" className="broadcast-process" style={{ paddingTop: 0 }} aria-label="Local Installation">
         <div className="broadcast-section-header">
           <div>
             <p className="eyebrow">
-              OFFICIAL RELEASES
+              SELF-HOSTED SETUP
               <br />
-              V1.0.0 / STANDALONE
+              100% LOCAL / OPEN SOURCE
             </p>
           </div>
           <h2>
-            Download KolRep.
+            Run KolRep locally.
             <br />
             Ready for your hardware.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Card A: Native macOS App */}
+          {/* Card A: Native Source Launcher */}
           <div className="panel p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-line mb-6">
                 <div>
-                  <span className="eyebrow block mb-1">NATIVE DESKTOP APP</span>
-                  <h3 className="text-2xl font-medium text-ink">macOS Apple Silicon</h3>
+                  <span className="eyebrow block mb-1">NATIVE HARDWARE ACCELERATION</span>
+                  <h3 className="text-2xl font-medium text-ink">Run from Source</h3>
                 </div>
                 <span className="mono text-xs px-2.5 py-1 bg-[#a5ba84]/20 text-[#3f571b] dark:text-[#a5ba84] rounded border border-[#a5ba84]/40 font-semibold">
                   RECOMMENDED
@@ -238,73 +239,8 @@ export default function ProductLandingPage() {
               </div>
 
               <p className="text-sm text-muted leading-relaxed mb-6">
-                Self-contained standalone desktop package. Includes the native Tauri v2 application
-                with zero runtime prerequisites—no Python, Node.js, Docker, PostgreSQL, Redis, or
-                FFmpeg installation required.
-              </p>
-
-              <div className="space-y-2 mb-8 text-xs text-muted">
-                <div className="flex items-center gap-2">
-                  <Check size={15} className="text-[#c63e26]" />
-                  <span>Supports macOS 12.0+ (Monterey, Ventura, Sonoma, Sequoia)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check size={15} className="text-[#c63e26]" />
-                  <span>Apple Silicon Native: M1, M2, M3, M4 (MPS Accelerated)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check size={15} className="text-[#c63e26]" />
-                  <span>Drag-to-Applications DMG with guided first-run model download (~1.05 GB)</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <a
-                href="https://github.com/Yash-Raw/KolRep/releases/download/v1.0.0/KolRep_1.0.0_aarch64.dmg"
-                className="btn btn-primary w-full text-sm py-3.5 mb-4 font-semibold"
-              >
-                <Download size={18} />
-                Download KolRep_1.0.0_aarch64.dmg
-              </a>
-
-              {/* SHA256 Checksum block */}
-              <div className="bg-canvas p-3 rounded border border-line">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="mono text-[10px] text-muted">SHA-256 CHECKSUM</span>
-                  <button
-                    onClick={handleCopySha}
-                    className="mono text-[10px] text-[#c63e26] hover:underline flex items-center gap-1"
-                  >
-                    {copiedSha ? <Check size={11} /> : <Copy size={11} />}
-                    {copiedSha ? "COPIED" : "COPY"}
-                  </button>
-                </div>
-                <div className="mono text-[11px] text-ink break-all select-all">{sha256}</div>
-              </div>
-              <p className="text-[11px] text-muted mt-3 leading-relaxed">
-                Unsigned open-source release: on first launch, right-click <code>KolRep.app</code> &rarr;{" "}
-                <strong>Open</strong> to approve via macOS Gatekeeper.
-              </p>
-            </div>
-          </div>
-
-          {/* Card B: Developer CLI & Docker */}
-          <div className="panel p-8 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-line mb-6">
-                <div>
-                  <span className="eyebrow block mb-1">DEVELOPERS &amp; LINUX / SELF-HOSTED</span>
-                  <h3 className="text-2xl font-medium text-ink">Source &amp; Docker Compose</h3>
-                </div>
-                <span className="mono text-xs px-2.5 py-1 bg-soft text-muted rounded border border-line font-medium">
-                  OPEN SOURCE
-                </span>
-              </div>
-
-              <p className="text-sm text-muted leading-relaxed mb-6">
-                Run the full-stack Next.js and FastAPI platform locally from source or via Docker
-                Compose. Supports macOS (MPS) and Linux (NVIDIA CUDA or CPU) workstations.
+                Run the full-stack Next.js studio and FastAPI neural engine directly on your
+                workstation with native Apple Silicon Metal (MPS) or NVIDIA CUDA acceleration.
               </p>
 
               {/* CLI Command Box */}
@@ -333,11 +269,77 @@ export default function ProductLandingPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>Apple Silicon MPS, NVIDIA CUDA (native Python), or CPU fallback</span>
+                  <span>Apple Silicon MPS (M1–M4), NVIDIA CUDA, or automatic CPU fallback</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Check size={15} className="text-[#c63e26]" />
-                  <span>Docker support: <code>docker compose up -d --build</code> (CPU container)</span>
+                  <span>Runs locally at <code>http://localhost:3000</code> with zero cloud APIs</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <a
+                href="https://github.com/Yash-Raw/KolRep"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary w-full text-sm py-3.5 font-semibold flex items-center justify-center gap-2"
+              >
+                <GithubIcon size={18} />
+                View Setup on GitHub
+              </a>
+            </div>
+          </div>
+
+          {/* Card B: Docker Compose */}
+          <div className="panel p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between pb-4 border-b border-line mb-6">
+                <div>
+                  <span className="eyebrow block mb-1">CONTAINERIZED STACK</span>
+                  <h3 className="text-2xl font-medium text-ink">Docker Compose</h3>
+                </div>
+                <span className="mono text-xs px-2.5 py-1 bg-soft text-muted rounded border border-line font-medium">
+                  OPEN SOURCE
+                </span>
+              </div>
+
+              <p className="text-sm text-muted leading-relaxed mb-6">
+                Spin up PostgreSQL, Redis, the FastAPI backend, and the Next.js studio in one
+                command with automated migrations and persistent local model caching.
+              </p>
+
+              {/* Docker Command Box */}
+              <div className="mb-6">
+                <div className="flex justify-between items-center mb-1">
+                  <span className="mono text-[10px] text-muted flex items-center gap-1.5">
+                    <Box size={12} /> DOCKER COMPOSE COMMANDS
+                  </span>
+                  <button
+                    onClick={handleCopyDocker}
+                    className="mono text-[10px] text-[#c63e26] hover:underline flex items-center gap-1"
+                  >
+                    {copiedDocker ? <Check size={11} /> : <Copy size={11} />}
+                    {copiedDocker ? "COPIED" : "COPY"}
+                  </button>
+                </div>
+                <pre className="mono text-[11.5px] p-4 bg-canvas border border-line rounded text-ink overflow-x-auto leading-relaxed select-all">
+                  {dockerCmd}
+                </pre>
+              </div>
+
+              <div className="space-y-2 mb-8 text-xs text-muted">
+                <div className="flex items-center gap-2">
+                  <Check size={15} className="text-[#c63e26]" />
+                  <span>Docker Desktop or Docker Engine with Compose v2</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={15} className="text-[#c63e26]" />
+                  <span>Pre-wired PostgreSQL, Redis, Alembic migrations &amp; persistent model cache</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={15} className="text-[#c63e26]" />
+                  <span>Loopback-only bindings (<code>127.0.0.1</code>) for private local execution</span>
                 </div>
               </div>
             </div>
@@ -430,13 +432,6 @@ export default function ProductLandingPage() {
                 className="flex items-center gap-1.5"
               >
                 <GithubIcon size={14} /> Repository
-              </a>
-              <a
-                href="https://github.com/Yash-Raw/KolRep/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Releases
               </a>
               <a
                 href="https://github.com/Yash-Raw/KolRep/blob/main/LICENSE"

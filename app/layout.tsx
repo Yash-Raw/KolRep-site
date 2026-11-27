@@ -19,7 +19,7 @@ const consoleFont = localFont({
 export const metadata: Metadata = {
   title: "KolRep — 100% Local AI Voice Cloning Platform",
   description:
-    "Zero-shot local voice cloning and studio narration running on your own hardware. Zero cloud voice APIs, zero telemetry, and dual-layer cryptographic provenance. Download the macOS desktop release.",
+    "Zero-shot local voice cloning and studio narration running on your own hardware. Zero cloud voice APIs, zero telemetry, and dual-layer cryptographic provenance.",
   applicationName: "KolRep",
   keywords: [
     "KolRep",
@@ -63,8 +63,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full ${studioFont.variable} ${consoleFont.variable}`}>
       <body className="min-h-full flex flex-col antialiased">
-        <a href="#download" className="skip-link">
-          Skip to download
+        <a href="#install" className="skip-link">
+          Skip to installation
         </a>
         <main id="main-content" className="flex-1 flex flex-col">
           {children}
